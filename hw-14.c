@@ -6,7 +6,8 @@
 static void sighandler(int signo){
     if (signo == SIGINT){
         FILE *file = open("error.log", O_WRONLY | O_TRUNC);
-        write(file, "Operation terminated because of a SIGINT", sizeof("Operation terminated because of a SIGINT"));
+        write(file, "Operation terminated because of a SIGINT\n", sizeof("Operation terminated because of a SIGINT\n"));
+        close(file);
         exit(0);
     }
     else if (signo == SIGUSR1){
